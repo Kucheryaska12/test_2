@@ -1,6 +1,6 @@
 import { loadUser, saveUser } from '../user';
 import { httpGet, httpPost } from '../http';
-import healthCount from '../app';
+import { healthCount, heroesSort } from '../app';
 
 jest.mock('../http');
 
@@ -33,4 +33,20 @@ test('Считаем здоровье', () => {
   expect(healthCount(pers1)).toBe('wounded');
   expect(healthCount(pers2)).toBe('healthy');
   expect(healthCount(pers3)).toBe('critical');
+})
+
+test('Проверяем сортировку', () => {
+  const data = [
+    {name: 'мечник', health: 10},
+    {name: 'маг', health: 100},
+    {name: 'лучник', health: 80},
+  ];
+
+  const expectedData = [
+    {name: 'маг', health: 100},
+    {name: 'лучник', health: 80},
+    {name: 'мечник', health: 10},
+  ];
+  
+  expect(heroesSort(data)).toEqual(expectedData)
 })
