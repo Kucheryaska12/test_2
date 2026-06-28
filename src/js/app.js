@@ -9,14 +9,5 @@ export function healthCount(obj)  {
 }
 
 export function heroesSort(data) {
-    let newData = [];
-    let healthSort = [];
-    for (let pers of data) {
-        healthSort.push(pers.health);
-        }
-    healthSort.sort((a, b) => b - a);
-    for (let i of healthSort) {
-        newData.push(data.filter(pers => pers.health === i)[0])
-    }
-    return newData
+    return data.sort((a, b) => b.health - a.health)
 }

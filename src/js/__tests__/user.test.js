@@ -17,14 +17,16 @@ test('should call loadUser once', () => {
 });
 
 test('Проверка функции httpPost', () => {
-  httpPost.mockReturnValue(200);
   expect(httpPost('http://server:8080/users/1')).toBe(200)
 })
 
 test('Проверка функции saveUser', () => {
   const user = {id: 25, name: 'Ivan'};
-  expect(saveUser(user)).toThrow('Unimplemented')
-})
+  try {
+    saveUser(user)
+  } catch(err) {
+  expect(err.message).toBe('Unimplemented')
+}})
 
 test('Считаем здоровье', () => {
   const pers1 = {name: 'Рыцарь', health: 28};

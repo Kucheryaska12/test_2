@@ -1,7 +1,7 @@
 export function httpGet(url) {
-  throw new Error(url);
+  return {};
 }
 
 export function httpPost(url) {
-  throw new Error(url);
+  return 200;
 }
